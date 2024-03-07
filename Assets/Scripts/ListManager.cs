@@ -79,19 +79,13 @@ public class ListManager : MonoBehaviour
 
         int newIndex = firstIndex;
 
-        for (int i = originalIndex; i < numItems; i++)
+        for (int i = 0; i < numItems; i++)
         {
             if (newIndex >= Num) break;
-            moveItemByIndex(listItemRect[i], newIndex);
-            listItems[i].UpdateContent(newIndex);
-            newIndex++;
-        }
 
-        for (int i = 0; i < originalIndex; i++)
-        {
-            if (newIndex >= Num) break;
-            moveItemByIndex(listItemRect[i], newIndex);
-            listItems[i].UpdateContent(newIndex);
+            int currentIndex = (originalIndex + i) % numItems;
+            moveItemByIndex(listItemRect[currentIndex], newIndex);
+            listItems[currentIndex].UpdateContent(newIndex);
             newIndex++;
         }
 
